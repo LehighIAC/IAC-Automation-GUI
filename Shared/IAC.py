@@ -5,7 +5,7 @@
 def Utility(filepath:str):
     """
     Extract Data from Energy Charts.xlsx
-    Save statistics to Utility.json5
+    Save statistics to Utility.json
     """
     import json, openpyxl
     from easydict import EasyDict
@@ -91,7 +91,6 @@ def validate_arc(ARC):
     Validate ARC number
     :param ARC: Full ARC as a string
     """
-    # json5 is too slow, use json instead.
     import os, json
     # Validate if ARC is in x.xxxx.xxx format
     ARCsplit = ARC.split('.')

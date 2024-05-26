@@ -19,7 +19,7 @@ conda activate iac
 ```
 ### Install the Following Packages
 ```
-conda install json5 numpy pandas openpyxl
+conda install numpy pandas openpyxl
 conda install -c conda-forge python-docx docxcompose easydict
 pip install python-docx-replace tkcalendar tkinter-tooltip
 ```
