@@ -51,9 +51,8 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
 
     # Load json database
     print("Reading json database...", end ="")
-    loadJSON = json.load(open('Compiler.json'))
-    loadJSON.update(json.load(open('Utility.json')))
-    # Create EasyDict
+    loadJSON = json.load(open(os.path.join("Shared", "Compiler.json")))
+    loadJSON.update(json.load(open(os.path.join("Shared", "Utility.json"))))
     iac = EasyDict()
     # Convert all sub-dicts to values
     for key in loadJSON:

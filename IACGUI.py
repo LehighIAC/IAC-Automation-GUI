@@ -5,8 +5,8 @@ from tkinter import scrolledtext, filedialog
 from tkcalendar import DateEntry
 from tktooltip import ToolTip
 from easydict import EasyDict
-from Shared.IAC import Utility
-from Compiler import Compiler
+from Shared.Utility import Utility
+from Shared.Compiler import Compiler
 
 class Application(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -361,7 +361,7 @@ class Application(tk.Frame):
         sys.stderr = TextRedirector(self.Text1, "stderr")
 
     def ReadInfo(self):
-        self.info = EasyDict(json.load(open("Compiler.json")))
+        self.info = EasyDict(json.load(open(os.path.join("Shared", "Compiler.json"))))
         self.LE = tk.StringVar(self.parent, self.info.LE.value)
         self.VDATE = tk.StringVar(self.parent, self.info.VDATE.value)
         self.LOC = tk.StringVar(self.parent, self.info.LOC.value)
@@ -407,7 +407,7 @@ class Application(tk.Frame):
         self.info.SAFE.value = self.SAFE.get()
 
         # save json
-        with open(os.path.join("Compiler.json"), 'w') as f:
+        with open(os.path.join("Shared", "Compiler.json"), 'w') as f:
             json.dump(self.info, f, indent=4)
         print("Saved visit information to Compiler.json")
 
