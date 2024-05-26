@@ -21,7 +21,7 @@ conda activate iac
 ```
 conda install json5 numpy pandas openpyxl
 conda install -c conda-forge python-docx docxcompose easydict
-pip install python-docx-replace tkcalendar tktooltip
+pip install python-docx-replace tkcalendar tkinter-tooltip
 ```
 `conda` always has the highest priority. If not available, install packages from `conda-forge`. Don't install from `pip` unless you have to, otherwise there might be dependency issue.
 ### Configure VS Code
