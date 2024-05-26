@@ -188,9 +188,9 @@ Temporary Items
 
 Recommendations/*.docx
 Recommendations/Sorted/
-Energy Charts.fld/
-Energy Charts_files/
-Energy Charts.htm
-~$Energy Charts.xlsx
+EnergyCharts.fld/
+EnergyCharts_files/
+EnergyCharts.htm
+~$EnergyCharts.xlsx
 LE*.docx
 *.ipynb

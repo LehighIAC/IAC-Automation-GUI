@@ -1,0 +1,70 @@
+{
+    "FuelType": {
+        "value": "Natural Gas",
+        "comment": "Fuel Type, string"
+    },
+    "FuelUnit": {
+        "value": "Mcf",
+        "comment": "Fuel Unit, string"
+    },
+    "FC": {
+        "value": 2.95,
+        "comment": "Fuel Cost, $/MMBtu, float"
+    },
+    "NGC": {
+        "value": 2.95,
+        "comment": "Natural Gas Cost(for compatibility), $/MMBtu, float"
+    },
+    "EC": {
+        "value": 0.081,
+        "comment": "Electricity Cost, $/kWh, float"
+    },
+    "DC": {
+        "value": 4.22,
+        "comment": "Demand Cost, $/kW, float"
+    },
+    "LR": {
+        "value": 40,
+        "comment": "Labor Rate, $/hr, integer"
+    },
+    "StartMo": {
+        "value": "Jul 22",
+        "comment": "Start month, string"
+    },
+    "EndMo": {
+        "value": "Jun 23",
+        "comment": "End month, string"
+    },
+    "TotalEkWh": {
+        "value": 17622865,
+        "comment": "Total Electricity, kWh, integer"
+    },
+    "TotalEBtu": {
+        "value": 182210,
+        "comment": "Total Electricity, MMBtu, integer"
+    },
+    "TotalDkW": {
+        "value": 33494,
+        "comment": "Total Demand, kW, integer"
+    },
+    "TotalECost": {
+        "value": 1608550,
+        "comment": "Total Electricity Cost, integer"
+    },
+    "TotalFBtu": {
+        "value": 392327,
+        "comment": "Total Fuel, MMBtu, integer"
+    },
+    "TotalFCost": {
+        "value": 1158864,
+        "comment": "Total Fuel Cost, integer"
+    },
+    "TotalBtu": {
+        "value": 574536,
+        "comment": "Total Energy, MMBtu, integer"
+    },
+    "TotalCost": {
+        "value": 2719414,
+        "comment": "Total Energy Cost, integer"
+    }
+}

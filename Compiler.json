@@ -1,20 +1,90 @@
 {
-"LE": "LE0560",
-"VDATE": "05/27/2024",
-"LOC": "Bethlehem, PA 18015",
-"SIC": "1234",
-"NAICS": "123456",
-"SALE": 1000000,
-"EMPL": 1000,
-"AREA": 100000,
-"PROD": "student",
-"ANPR": 2000,
-"PRUN": "units",
-"PROH": [10.5, 7, 52],
-"OFOH": [8, 5, 52],
-"PROF": "Dr. Alparslan Oztekin",
-"LEAD": "Tong Su",
-"SAFE": "Orhan Kaya",
-"PART": ["Orhan Kaya", "Tong Su"],
-"CONT": ["Muhannad Altimemy", "Orhan Kaya", "Tong Su", "Guanyang Xue"]
+    "LE": {
+        "value": "LE0561",
+        "comment": "Visit number, string"
+    },
+    "VDATE": {
+        "value": "05/27/2024",
+        "comment": "For two day visits, use the second date."
+    },
+    "LOC": {
+        "value": "Bethlehem, PA 18015",
+        "comment": "City, State ZIP, string"
+    },
+    "SIC": {
+        "value": "1234",
+        "comment": "Look up from https://www.osha.gov/data/sic-manual"
+    },
+    "NAICS": {
+        "value": "123456",
+        "comment": "Look up from https://www.census.gov/naics/"
+    },
+    "SALE": {
+        "value": 1000000,
+        "comment": "Annual sales, $, interger"
+    },
+    "EMPL": {
+        "value": 100,
+        "comment": "Number of employees, integer"
+    },
+    "AREA": {
+        "value": 100000,
+        "comment": "Area, sqft, integer"
+    },
+    "PROD": {
+        "value": "student",
+        "comment": "Principal roduct, string"
+    },
+    "ANPR": {
+        "value": 1000,
+        "comment": "Annual production, units"
+    },
+    "PRUN": {
+        "value": "units",
+        "comment": "Production unit, string"
+    },
+    "PROH": {
+        "value": [
+            10.5,
+            7,
+            52
+        ],
+        "comment": "Production hours, list of [float, int, int]"
+    },
+    "OFOH": {
+        "value": [
+            7.5,
+            5,
+            52
+        ],
+        "comment": "Office hours, list of [float, int, int]"
+    },
+    "PROF": {
+        "value": "Dr. Alparslan Oztekin",
+        "comment": "Professor, string"
+    },
+    "LEAD": {
+        "value": "Tong Su",
+        "comment": "Lead Student, string"
+    },
+    "SAFE": {
+        "value": "Orhan Kaya",
+        "comment": "Safety Student, string"
+    },
+    "PART": {
+        "value": [
+            "Tong Su",
+            "Orhan Kaya"
+        ],
+        "comment": "Visit Participants, list of strings"
+    },
+    "CONT": {
+        "value": [
+            "Tong Su",
+            "Orhan Kaya",
+            "Guanyang Xue",
+            "Muhannad Altimemy"
+        ],
+        "comment": "Report Contributors, list of strings"
+    }
 }

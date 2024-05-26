@@ -7,91 +7,62 @@ def Utility(filepath:str):
     Extract Data from Energy Charts.xlsx
     Save statistics to Utility.json5
     """
-    import os, re, openpyxl
+    import json, openpyxl
+    from easydict import EasyDict
+    # Open Utility.json as dictionary
+    utility = EasyDict(json.load(open('utility.json')))
     # Read Energy Charts.xlsx
     wb = openpyxl.load_workbook(filepath, data_only=True)
+
     # Get Raw Data worksheet
     ws = wb['Raw Data']
-
-    ## Save statistics to Utility.json5
+    ## Save statistics to Utility.json
     # Get Electricity cost from cell D21, 3 digits
-    EC = round(ws['D21'].value,3)
+    utility.EC.value = round(ws['D21'].value,3)
     # Get Demand cost from cell D23, 2 digits
-    DC = round(ws['D23'].value,2)
+    utility.DC.value = round(ws['D23'].value,2)
     # Get Fees from cell G19, 2 digits
     Fees = round(ws['G19'].value,2)
     # Get Fuel cost from cell D24, 2 digits
-    FC = round(ws['D24'].value,2)
+    utility.FC.value = round(ws['D24'].value,2)
     # Get Fuel type from cell Q2, string
-    FuelType = ws['Q2'].value
+    utility.FuelType.value = ws['Q2'].value
     # Get Fuel unit from cell Q3, string
-    FuelUnit = ws['Q3'].value
+    utility.FuelUnit.value = ws['Q3'].value
     # Get Start Month from cell B7, string
-    StartMo = ws['B7'].value
+    utility.StartMo.value = ws['B7'].value
     # Get End Month from cell B18, string
-    EndMo = ws['B18'].value
+    utility.EndMo.value = ws['B18'].value
     # Get Total Electricity kWh from cell C19
-    TotalEkWh = round(ws['C19'].value)
+    utility.TotalEkWh.value = round(ws['C19'].value)
     # Get Total Electricity MMBtu from cell I19
-    TotalEBtu = round(ws['I19'].value)
+    utility.TotalEBtu.value = round(ws['I19'].value)
     # Get Total Demand kW from cell E19
-    TotalDkW = round(ws['E19'].value)
+    utility.TotalDkW.value = round(ws['E19'].value)
     # Get Total Fuel MMBtu from cell M19
-    TotalFBtu = round(ws['M19'].value)
+    utility.TotalFBtu.value = round(ws['M19'].value)
 
     # Get Total Energy worksheet
     ws = wb['Total Energy']
     # Get Total Electricity cost from cell E5+E6
-    TotalECost = round(ws['E5'].value+ws['E6'].value+Fees)
+    utility.TotalECost.value = round(ws['E5'].value+ws['E6'].value+Fees)
     # Get Total Fuel cost from cell E7
-    TotalFCost = round(ws['E7'].value)
+    utility.TotalFCost.value = round(ws['E7'].value)
     # Get Total Energy MMBtu from cell D8
-    TotalBtu = round(ws['D8'].value)
+    utility.TotalBtu.value = round(ws['D8'].value)
     # Get Total Energy Cost from cell E8
-    TotalCost = round(ws['E8'].value)
+    utility.TotalCost.value = round(ws['E8'].value)
 
     # Write Natural Gas Cost for compatibility.
-    if FuelType == 'Natural Gas':
-        NGC = FC
+    if utility.FuelType.value == "Natural Gas":
+        utility.NGC.value = utility.FC.value
     else:
-        NGC = 0
+        utility.NGC.value = 0
 
-    # Open Utility.json5 as text
-    try:
-        with open('Utility.json5', 'r') as f:
-            utility = f.read()
-            f.close()
-    except FileNotFoundError:
-        print('Utility.json5 not found.')
-        os._exit(1)
+    # Save to Utility.json
+    with open('Utility.json', 'w') as f:
+        json.dump(utility, f, indent=4)
 
-    # Replace values in Utility.json5
-    utility = re.sub(r'EC: .*', 'EC: ' + str(EC) + ',', utility)
-    utility = re.sub(r'DC: .*', 'DC: ' + str(DC) + ',', utility)
-    utility = re.sub(r'FC: .*', 'FC: ' + str(FC) + ',', utility)
-    utility = re.sub(r'FuelType: .*', 'FuelType: "' + FuelType + '",', utility)
-    utility = re.sub(r'FuelUnit: .*', 'FuelUnit: "' + FuelUnit + '",', utility)
-    utility = re.sub(r'NGC: .*', 'NGC: ' + str(NGC) + ',', utility)
-    utility = re.sub(r'StartMo: .*', 'StartMo: "' + str(StartMo) + '",', utility)
-    utility = re.sub(r'EndMo: .*', 'EndMo: "' + str(EndMo) + '",', utility)
-    utility = re.sub(r'TotalEkWh: .*', 'TotalEkWh: ' + str(TotalEkWh) + ',', utility)
-    utility = re.sub(r'TotalEBtu: .*', 'TotalEBtu: ' + str(TotalEBtu) + ',', utility)
-    utility = re.sub(r'TotalDkW: .*', 'TotalDkW: ' + str(TotalDkW) + ',', utility)
-    utility = re.sub(r'TotalFBtu: .*', 'TotalFBtu: ' + str(TotalFBtu) + ',', utility)
-    utility = re.sub(r'TotalECost: .*', 'TotalECost: ' + str(TotalECost) + ',', utility)
-    utility = re.sub(r'TotalFCost: .*', 'TotalFCost: ' + str(TotalFCost) + ',', utility)
-    utility = re.sub(r'TotalBtu: .*', 'TotalBtu: ' + str(TotalBtu) + ',', utility)
-    utility = re.sub(r'TotalCost: .*', 'TotalCost: ' + str(TotalCost) + ',', utility)
-
-    # Save utility.json5
-    try:
-        with open('Utility.json5', 'w') as f:
-            f.write(utility)
-            f.close()
-            print('Successfully analyzed energy charts.')
-    except FileNotFoundError:
-        print('Utility.json5 not found.')
-        os._exit(1)
                 
 def title_case(text: str) -> str:
     """
@@ -113,6 +84,7 @@ def title_case(text: str) -> str:
         else:
             text[i] = word.title()
     return ' '.join(text)
+
 
 def validate_arc(ARC):
     """
@@ -155,6 +127,7 @@ def validate_arc(ARC):
         raise Exception("Application code not found.")
 
     print("")
+
 
 def grouping_num(dic: dict) -> dict:
     """
@@ -211,6 +184,7 @@ def dollar(varlist: list, dic: dict, digits: int=0) -> str:
         dic[var] = locale.currency(dic[var], grouping=True)
     return dic
 
+
 def combine_words(words: list) -> str:
     """
     :param words: list of strings
@@ -232,6 +206,7 @@ def combine_words(words: list) -> str:
         else:
             pass
     return combined
+
 
 def add_image(doc, tag: str, image_path: str, wd):
     """
@@ -296,10 +271,3 @@ def payback(ACS, IC) -> str:
     if PB > 1.0:
         PBstr = PBstr + "s"
     return PBstr
-
-def caveat(info: str):
-    """
-    Print caveats with highlighting
-    :param info: information to be printed
-    """
-    print("\033[94m\033[103m{}\033[0m\033[0m".format(info))
