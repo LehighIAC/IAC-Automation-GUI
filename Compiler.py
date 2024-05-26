@@ -35,7 +35,7 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
             # pop up a tkinter messagebox
             msb=tk.messagebox.askokcancel("Warning", "You haven't edited Description.docx yet. Continue?")
             if msb == False:
-                sys.stderr.write("Please edit Description.docx and compile again.")
+                sys.stderr.write("Please edit Description.docx and compile again.\n")
                 return
 
     # If the HTML is saved on macOS

@@ -13,7 +13,7 @@ class Application(tk.Frame):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        parent.geometry("1030x500")
+        parent.geometry("1080x540")
         parent.resizable(False,  False)
         parent.title("IAC Automated Report GUI")
         parent.eval('tk::PlaceWindow . center')
@@ -26,14 +26,14 @@ class Application(tk.Frame):
         self.ReadInfo()
 
         self.Labelframe1 = tk.LabelFrame(self.parent)
-        self.Labelframe1.place(x=20, y=10, height=480, width=340)
+        self.Labelframe1.place(x=20, y=10, height=510, width=340)
         self.Labelframe1.configure(text="Visit Information")
 
         LblInfoX=5
-        LblInfoY=5
+        LblInfoY=10
         LblInfoH=20
         LblInfoW=120
-        LblInfoGapY=25
+        LblInfoGapY=26
 
         self.Labelinfo01 = tk.Label(self.Labelframe1)
         self.Labelinfo01.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
@@ -143,7 +143,7 @@ class Application(tk.Frame):
         ToolTip(self.Labelinfo18, msg=self.info.CONT.comment)
 
         EtrInfoX=125
-        EtrInfoY=5
+        EtrInfoY=10
         EtrInfoH=22
         EtrInfoW=200
 
@@ -251,15 +251,15 @@ class Application(tk.Frame):
 
 
         self.Labelframe2 = tk.LabelFrame(self.parent, text="Workflow")
-        self.Labelframe2.place(x=380, y=10, height=480, width=210)
+        self.Labelframe2.place(x=380, y=10, height=510, width=210)
 
         LblCompX=10
         CmdCompX=40
         LblCompW=180
         CmdCompW=120
         CmdCompH=28
-        CompY=0
-        CompGapY=8
+        CompY=10
+        CompGapY=10
 
         LblCompH=20
         self.Label1 = tk.Label(self.Labelframe2)
@@ -349,11 +349,14 @@ class Application(tk.Frame):
 
 
         self.Labelframe3 = tk.LabelFrame(self.parent)
-        self.Labelframe3.place(x=610, y=10, height=480, width=400)
+        self.Labelframe3.place(x=610, y=10, height=510, width=450)
         self.Labelframe3.configure(text="Command Line Output")
-        self.Text1 =scrolledtext.ScrolledText(self.Labelframe3, state='disabled',wrap="word")
-        self.Text1.place(x=10, y=10, height=440, width=380)
+        self.Text1 = scrolledtext.ScrolledText(self.Labelframe3, state='disabled',wrap="word")
+        self.Text1.place(x=10, y=10, height=460, width=430)
         self.Text1.tag_configure("stderr", foreground="#b22222")
+        self.Laebl8 = tk.Label(self.Labelframe3)
+        self.Laebl8.place(x=10, y=465, height=20, width=430)
+        self.Laebl8.configure(text="Copyright © 2024 Lehigh University Industrial Assessment Center")
         sys.stdout = TextRedirector(self.Text1, "stdout")
         sys.stderr = TextRedirector(self.Text1, "stderr")
 
