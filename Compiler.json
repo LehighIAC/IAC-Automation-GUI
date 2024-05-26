@@ -1,0 +1,20 @@
+{
+"LE": "LE0560",
+"VDATE": "05/27/2024",
+"LOC": "Bethlehem, PA 18015",
+"SIC": "1234",
+"NAICS": "123456",
+"SALE": 1000000,
+"EMPL": 1000,
+"AREA": 100000,
+"PROD": "student",
+"ANPR": 2000,
+"PRUN": "units",
+"PROH": [10.5, 7, 52],
+"OFOH": [8, 5, 52],
+"PROF": "Dr. Alparslan Oztekin",
+"LEAD": "Tong Su",
+"SAFE": "Orhan Kaya",
+"PART": ["Orhan Kaya", "Tong Su"],
+"CONT": ["Muhannad Altimemy", "Orhan Kaya", "Tong Su", "Guanyang Xue"]
+}
