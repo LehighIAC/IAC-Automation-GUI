@@ -40,14 +40,14 @@ def Utility(filepath:str):
 
     # Get Total Energy worksheet
     ws = wb['Total Energy']
-    # Get Total Electricity cost from cell E5+E6
-    utility.TotalECost.value = round(ws['E5'].value+ws['E6'].value+Fees)
+    # Get Total Electricity cost from cell E5+E6 plus other fees
+    utility.TotalECost.value = round(ws['E5'].value)+ round(ws['E6'].value)+ round(Fees)
     # Get Total Fuel cost from cell E7
     utility.TotalFCost.value = round(ws['E7'].value)
     # Get Total Energy MMBtu from cell D8
     utility.TotalBtu.value = round(ws['D8'].value)
     # Get Total Energy Cost from cell E8
-    utility.TotalCost.value = round(ws['E8'].value)
+    utility.TotalCost.value = utility.TotalECost.value + utility.TotalFCost.value
 
     # Write Natural Gas Cost for compatibility.
     if utility.FuelType.value == "Natural Gas":

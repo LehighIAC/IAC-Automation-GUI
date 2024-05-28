@@ -229,7 +229,7 @@ class Application(tk.Frame):
         self.Entryinfo14.place(x=EtrInfoX+1, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW-1)
 
         EtrInfoY+=LblInfoGapY
-        Students= ["Tong Su", "Orhan Kaya", "Guanyang Xue", "Muhannad Altimemy", "Direnc Akyildiz"]
+        Students= ["Justin Caspar", "Tong Su", "Orhan Kaya", "Guanyang Xue", "Muhannad Altimemy", "Direnc Akyildiz"]
         self.Entryinfo15 = tk.OptionMenu(self.Labelframe1, self.LEAD, *Students)
         self.Entryinfo15.place(x=EtrInfoX+1, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW-1)
 
