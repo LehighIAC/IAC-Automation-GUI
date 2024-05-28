@@ -226,6 +226,10 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
     iac.PBstr = payback(iac.ACS, iac.IC)
     print("done")
 
+    # detect if sorted folder exists
+    if not os.path.exists(os.path.join(RecommendationPath, 'Sorted')):
+        os.makedirs(os.path.join(RecommendationPath, 'Sorted'))
+
     print("Reformatting recommendations...", end ="")
     subtitleList = ["Recommended Actions","Summary of Estimated Savings and Implementation Costs","Current Practice and Observations","Anticipated Savings","Implementation Costs","Implementation Cost References"]
     ## Reformatting Recommendations
