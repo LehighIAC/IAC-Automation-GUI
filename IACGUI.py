@@ -223,66 +223,68 @@ class Application(tk.Frame):
         self.Buttoninfo17.config(width=6)
         self.Buttoninfo18.config(width=6)
             
-        wrap=190
         self.Labelframe2 = tk.LabelFrame(self.parent, text="Workflow")
         self.Labelframe2.place(x=380, y=10, height=570, width=210)
 
-        self.Label1 = tk.Label(self.Labelframe2, text="1. Analyze EnergyChart.xlsx",justify='left',wraplength=wrap)
+        self.Label1 = tk.Label(self.Labelframe2, text="1. Analyze EnergyChart.xlsx",justify='left')
         self.Label1.grid(row=0, column=0, sticky='w')
 
         self.Button1 = tk.Button(self.Labelframe2, text="Locate File", command = self.LoadEnergyChart)
         self.Button1.grid(row=1, column=0)
 
-        self.Label2 = tk.Label(self.Labelframe2, text="2. Open EnergyChart.xlsx and save as Web Page (.htm)",justify='left',wraplength=wrap)
-        self.Label2.grid(row=2, column=0, sticky='w')
+        self.Label2 = tk.Label(self.Labelframe2, text="2. Open EnergyChart.xlsx and save as Web Page (.htm)",justify='left')
+        self.Label2.grid(row=3, column=0, sticky='w')
 
         self.Button2 = tk.Button(self.Labelframe2, text="Open in Excel", command = self.OpenEnergyChart)
-        self.Button2.grid(row=3, column=0)
+        self.Button2.grid(row=4, column=0)
 
-        self.Label3 = tk.Label(self.Labelframe2, text="3. Fill in visit information",justify='left',wraplength=wrap)
-        self.Label3.grid(row=4, column=0, sticky='w')
+        self.Label3 = tk.Label(self.Labelframe2, text="3. Fill in visit information",justify='left')
+        self.Label3.grid(row=6, column=0, sticky='w')
 
         self.Button3 = tk.Button(self.Labelframe2, text='Save information', command = self.SaveInfo)
-        self.Button3.grid(row=5, column=0)
+        self.Button3.grid(row=7, column=0)
   
-        self.Label4 = tk.Label(self.Labelframe2, text="4. Locate the folder including all recommendation .docx",justify='left',wraplength=wrap)
-        self.Label4.grid(row=6, column=0, sticky='w')
+        self.Label4 = tk.Label(self.Labelframe2, text="4. Locate the folder including all recommendation .docx",justify='left')
+        self.Label4.grid(row=9, column=0, sticky='w')
         
         self.Button4 = tk.Button(self.Labelframe2, text="Locate folder", command = self.LocateRecommendation)
-        self.Button4.grid(row=7, column=0)
+        self.Button4.grid(row=10, column=0)
 
-        self.Label5 = tk.Label(self.Labelframe2, text="5. Edit Description.docx",justify='left',wraplength=wrap)
-        self.Label5.grid(row=8, column=0, sticky='w')
+        self.Label5 = tk.Label(self.Labelframe2, text="5. Edit Description.docx",justify='left')
+        self.Label5.grid(row=12, column=0, sticky='w')
 
         self.Button5 = tk.Button(self.Labelframe2, text="Open in Word", command = self.OpenDescription)
-        self.Button5.grid(row=9, column=0)
+        self.Button5.grid(row=13, column=0)
 
-        self.Label6 = tk.Label(self.Labelframe2, text="6. Compile the report",justify='left',wraplength=wrap)
-        self.Label6.grid(row=10, column=0, sticky='w')
+        self.Label6 = tk.Label(self.Labelframe2, text="6. Compile the report",justify='left')
+        self.Label6.grid(row=15, column=0, sticky='w')
 
         self.Button6 = tk.Button(self.Labelframe2, text="Compile", command=self.CompileReport)
-        self.Button6.grid(row=11, column=0)
+        self.Button6.grid(row=16, column=0)
 
-        self.Label7 = tk.Label(self.Labelframe2, text="7. Open the report, select all (Ctrl+A); refresh (F9), OK; refresh (F9) again, OK.",justify='left',wraplength=wrap)
-        self.Label7.grid(row=12, column=0, sticky='w')
+        self.Label7 = tk.Label(self.Labelframe2, text="7. Open the report, select all (Ctrl+A); refresh (F9), OK; refresh (F9) again, OK.",justify='left')
+        self.Label7.grid(row=18, column=0, sticky='w')
 
         self.Button7 = tk.Button(self.Labelframe2, text="Open in Word", command=self.OpenReport)
-        self.Button7.grid(row=13, column=0)
+        self.Button7.grid(row=19, column=0)
 
-        self.Label8 = tk.Label(self.Labelframe2, text="Copyright © 2024\nLehigh University Industrial Assessment Center", justify='left',wraplength=wrap)
-        self.Label8.grid(row=14, column=0, sticky='w')
+        self.Label8 = tk.Label(self.Labelframe2, text="Copyright © 2024\nLehigh University Industrial Assessment Center", justify='left')
+        self.Label8.grid(row=21, column=0, sticky='w')
 
         for rows in range(self.Labelframe2.grid_size()[1]):
             # add padx
-            self.Labelframe2.grid_slaves(row=rows, column=0)[0].config(padx=10)
-            if rows % 2 == 0:
+            if rows % 3 == 0:
                 #label
-                self.Labelframe2.rowconfigure(rows, minsize=36)
-            else:
+                self.Labelframe2.rowconfigure(rows, minsize=24)
+                #change label wraplength
+                self.Labelframe2.grid_slaves(row=rows, column=0)[0].config(padx=10,wraplength=190)
+            elif rows % 3 == 1:
                 #button
-                self.Labelframe2.rowconfigure(rows, minsize=30)
                 #change button width
-                self.Labelframe2.grid_slaves(row=rows, column=0)[0].config(width=15)
+                self.Labelframe2.grid_slaves(row=rows, column=0)[0].config(padx=10,width=15)
+            else:
+                #space
+                self.Labelframe2.rowconfigure(rows, minsize=10)
 
 
         self.Labelframe3 = tk.LabelFrame(self.parent)
