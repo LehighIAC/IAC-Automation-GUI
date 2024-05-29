@@ -48,7 +48,7 @@
         "comment": "Total Demand, kW, integer"
     },
     "TotalECost": {
-        "value": 1608550,
+        "value": 1608549,
         "comment": "Total Electricity Cost, integer"
     },
     "TotalFBtu": {
@@ -64,7 +64,7 @@
         "comment": "Total Energy, MMBtu, integer"
     },
     "TotalCost": {
-        "value": 2719414,
+        "value": 2767413,
         "comment": "Total Energy Cost, integer"
     }
 }
