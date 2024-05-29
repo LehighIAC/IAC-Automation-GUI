@@ -337,8 +337,16 @@ class Application(tk.Frame):
         self.info.PROD.value = self.PROD.get()
         self.info.ANPR.value = int(self.ANPR.get())
         self.info.PRUN.value = self.PRUN.get()
-        self.info.PROH.value = [float(self.PROHH.get()), int(self.PROHD.get()), int(self.PRODW.get())]
-        self.info.OFOH.value = [float(self.OFOHH.get()), int(self.OFOHD.get()), int(self.OFODW.get())]
+        PROH = self.PROHH.get()
+        if PROH.isdigit():
+            self.info.PROH.value = [int(PROH), int(self.PROHD.get()), int(self.PRODW.get())]
+        else:
+            self.info.PROH.value = [float(PROH), int(self.PROHD.get()), int(self.PRODW.get())]
+        OFOH = self.OFOHH.get()
+        if OFOH.isdigit():
+            self.info.OFOH.value = [int(OFOH), int(self.OFOHD.get()), int(self.OFODW.get())]
+        else:
+            self.info.OFOH.value = [float(OFOH), int(self.OFOHD.get()), int(self.OFODW.get())]
         self.info.PROF.value = self.PROF.get()
         self.info.LEAD.value = self.LEAD.get()
         self.info.SAFE.value = self.SAFE.get()
