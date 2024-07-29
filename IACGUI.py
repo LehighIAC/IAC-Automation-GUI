@@ -170,7 +170,7 @@ class Application(tk.Frame):
         self.Optioninfo14 = tk.OptionMenu(self.Labelframe1, self.PROF, *Professors)
         self.Optioninfo14.grid(row=14, column=1)
 
-        Students= ["Tong Su", "Orhan Kaya", "Guanyang Xue", "Muhannad Altimemy", "Direnc Akyildiz", "Justin Caspar"]
+        Students= ["Tong Su", "Orhan Kaya", "Guanyang Xue", "Muhannad Altimemy", "Direnc Akyildiz", "Amin Balazadeh", "Evan Dare"]
         self.Optioninfo15 = tk.OptionMenu(self.Labelframe1, self.LEAD, *Students)
         self.Optioninfo15.grid(row=15, column=1)
 
