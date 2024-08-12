@@ -13,7 +13,7 @@ class Application(tk.Frame):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        parent.geometry("1080x540")
+        parent.geometry("1200x600")
         parent.resizable(False,  False)
         parent.title("IAC Automated Report GUI")
         parent.eval('tk::PlaceWindow . center')
@@ -25,338 +25,275 @@ class Application(tk.Frame):
         # Read visit information from Compiler.json
         self.ReadInfo()
 
+        # Create widgets
         self.Labelframe1 = tk.LabelFrame(self.parent)
-        self.Labelframe1.place(x=20, y=10, height=510, width=340)
+        self.Labelframe1.place(x=20, y=10, height=570, width=340)
         self.Labelframe1.configure(text="Visit Information")
 
-        LblInfoX=5
-        LblInfoY=10
-        LblInfoH=20
-        LblInfoW=120
-        LblInfoGapY=26
-
-        self.Labelinfo01 = tk.Label(self.Labelframe1)
-        self.Labelinfo01.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo01.configure(anchor='w',text="Report Number")
+        self.Labelinfo01 = tk.Label(self.Labelframe1, text="Report Number")
+        self.Labelinfo01.grid(row=1, column=0, sticky='w')
         ToolTip(self.Labelinfo01, msg=self.info.LE.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo02 = tk.Label(self.Labelframe1)
-        self.Labelinfo02.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo02.configure(anchor='w',text="Visit Date")
+        self.Labelinfo02 = tk.Label(self.Labelframe1, text="Visit Date")
+        self.Labelinfo02.grid(row=2, column=0, sticky='w')
         ToolTip(self.Labelinfo02, msg=self.info.VDATE.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo03 = tk.Label(self.Labelframe1)
-        self.Labelinfo03.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo03.configure(anchor='w',text="Plant Location")
+        self.Labelinfo03 = tk.Label(self.Labelframe1, text="Plant Location")
+        self.Labelinfo03.grid(row=3, column=0, sticky='w')
         ToolTip(self.Labelinfo03, msg=self.info.LOC.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo04 = tk.Label(self.Labelframe1)
-        self.Labelinfo04.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo04.configure(anchor='w',text="SIC Code")
+        self.Labelinfo04 = tk.Label(self.Labelframe1, text="SIC Code")
+        self.Labelinfo04.grid(row=4, column=0, sticky='w')
         ToolTip(self.Labelinfo04, msg=self.info.SIC.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo05 = tk.Label(self.Labelframe1)
-        self.Labelinfo05.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo05.configure(anchor='w',text="NAICS Code")
+        self.Labelinfo05 = tk.Label(self.Labelframe1, text="NAICS Code")
+        self.Labelinfo05.grid(row=5, column=0, sticky='w')
         ToolTip(self.Labelinfo05, msg=self.info.NAICS.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo06 = tk.Label(self.Labelframe1)
-        self.Labelinfo06.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo06.configure(anchor='w',text="Annual Sales ($)")
+        self.Labelinfo06 = tk.Label(self.Labelframe1, text="Annual Sales ($)")
+        self.Labelinfo06.grid(row=6, column=0, sticky='w')
         ToolTip(self.Labelinfo06, msg=self.info.SALE.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo07 = tk.Label(self.Labelframe1)
-        self.Labelinfo07.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo07.configure(anchor='w',text="No. of Employees")
+        self.Labelinfo07 = tk.Label(self.Labelframe1, text="No. of Employees")
+        self.Labelinfo07.grid(row=7, column=0, sticky='w')
         ToolTip(self.Labelinfo07, msg=self.info.EMPL.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo08 = tk.Label(self.Labelframe1)
-        self.Labelinfo08.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo08.configure(anchor='w',text="Plant Area (sqft)")
+        self.Labelinfo08 = tk.Label(self.Labelframe1, text="Plant Area (sqft)")
+        self.Labelinfo08.grid(row=8, column=0, sticky='w')
         ToolTip(self.Labelinfo08, msg=self.info.AREA.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo09 = tk.Label(self.Labelframe1)
-        self.Labelinfo09.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo09.configure(anchor='w',text="Principal Product")
+        self.Labelinfo09 = tk.Label(self.Labelframe1, text="Principal Product")
+        self.Labelinfo09.grid(row=9, column=0, sticky='w')
         ToolTip(self.Labelinfo09, msg=self.info.PROD.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo10 = tk.Label(self.Labelframe1)
-        self.Labelinfo10.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo10.configure(anchor='w',text="Annual Production")
+        self.Labelinfo10 = tk.Label(self.Labelframe1, text="Annual Production")
+        self.Labelinfo10.grid(row=10, column=0, sticky='w')
         ToolTip(self.Labelinfo10, msg=self.info.ANPR.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo11 = tk.Label(self.Labelframe1)
-        self.Labelinfo11.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo11.configure(anchor='w',text="Production Units")
+        self.Labelinfo11 = tk.Label(self.Labelframe1, text="Production Units")
+        self.Labelinfo11.grid(row=11, column=0, sticky='w')
         ToolTip(self.Labelinfo11, msg=self.info.PRUN.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo12 = tk.Label(self.Labelframe1)
-        self.Labelinfo12.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo12.configure(anchor='w',text="Production Hours")
+        self.Labelinfo12 = tk.Label(self.Labelframe1, text="Production Hours")
+        self.Labelinfo12.grid(row=12, column=0, sticky='w')
         ToolTip(self.Labelinfo12, msg=self.info.PROH.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo13 = tk.Label(self.Labelframe1)
-        self.Labelinfo13.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo13.configure(anchor='w',text="Office Hours")
+        self.Labelinfo13 = tk.Label(self.Labelframe1, text="Office Hours")
+        self.Labelinfo13.grid(row=13, column=0, sticky='w')
         ToolTip(self.Labelinfo13, msg=self.info.OFOH.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo14 = tk.Label(self.Labelframe1)
-        self.Labelinfo14.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo14.configure(anchor='w',text="Lead Professor")
+        self.Labelinfo14 = tk.Label(self.Labelframe1, text="Lead Professor")
+        self.Labelinfo14.grid(row=14, column=0, sticky='w')
         ToolTip(self.Labelinfo14, msg=self.info.PROF.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo15 = tk.Label(self.Labelframe1)
-        self.Labelinfo15.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo15.configure(anchor='w',text="Lead Student")
+        self.Labelinfo15 = tk.Label(self.Labelframe1, text="Lead Student")
+        self.Labelinfo15.grid(row=15, column=0, sticky='w')
         ToolTip(self.Labelinfo15, msg=self.info.LEAD.comment)
     
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo16 = tk.Label(self.Labelframe1)
-        self.Labelinfo16.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo16.configure(anchor='w',text="Safety Student")
+        self.Labelinfo16 = tk.Label(self.Labelframe1, text="Safety Student")
+        self.Labelinfo16.grid(row=16, column=0, sticky='w')
         ToolTip(self.Labelinfo16, msg=self.info.SAFE.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo17 = tk.Label(self.Labelframe1)
-        self.Labelinfo17.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo17.configure(anchor='w',text="Participants")
+        self.Labelinfo17 = tk.Label(self.Labelframe1, text="Participants")
+        self.Labelinfo17.grid(row=17, column=0, sticky='w')
         ToolTip(self.Labelinfo17, msg=self.info.PART.comment)
 
-        LblInfoY+=LblInfoGapY
-        self.Labelinfo18 = tk.Label(self.Labelframe1)
-        self.Labelinfo18.place(x=LblInfoX, y=LblInfoY, height=LblInfoH, width=LblInfoW)
-        self.Labelinfo18.configure(anchor='w',text="Contributors")
+        self.Labelinfo18 = tk.Label(self.Labelframe1, text="Contributors")
+        self.Labelinfo18.grid(row=18, column=0, sticky='w')
         ToolTip(self.Labelinfo18, msg=self.info.CONT.comment)
 
-        EtrInfoX=125
-        EtrInfoY=10
-        EtrInfoH=22
-        EtrInfoW=200
-
         self.Entryinfo01 = tk.Entry(self.Labelframe1, textvariable=self.LE)
-        self.Entryinfo01.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo01.grid(row=1, column=1, sticky='w')
         
-        EtrInfoY+=LblInfoGapY
-        self.Entryinfo02 = DateEntry(self.Labelframe1, textvariable=self.VDATE, date_pattern='mm/dd/yyyy',)
-        self.Entryinfo02.place(x=EtrInfoX+1, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW-1)
-        self.Entryinfo02.set_date(self.info.VDATE.value)
+        self.Dateinfo02 = DateEntry(self.Labelframe1, textvariable=self.VDATE, date_pattern='mm/dd/yyyy')
+        self.Dateinfo02.set_date(self.info.VDATE.value)
+        self.Dateinfo02.grid(row=2, column=1)
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo03 = tk.Entry(self.Labelframe1, textvariable=self.LOC)
-        self.Entryinfo03.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo03.grid(row=3, column=1, sticky='w')
        
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo04 = tk.Entry(self.Labelframe1, textvariable=self.SIC)
-        self.Entryinfo04.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo04.grid(row=4, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo05 = tk.Entry(self.Labelframe1, textvariable=self.NAICS)
-        self.Entryinfo05.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo05.grid(row=5, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo06 = tk.Entry(self.Labelframe1, textvariable=self.SALE)
-        self.Entryinfo06.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo06.grid(row=6, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo07 = tk.Entry(self.Labelframe1, textvariable=self.EMPL)
-        self.Entryinfo07.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo07.grid(row=7, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo08 = tk.Entry(self.Labelframe1, textvariable=self.AREA)
-        self.Entryinfo08.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo08.grid(row=8, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo09 = tk.Entry(self.Labelframe1, textvariable=self.PROD)
-        self.Entryinfo09.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo09.grid(row=9, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo10 = tk.Entry(self.Labelframe1, textvariable=self.ANPR)
-        self.Entryinfo10.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo10.grid(row=10, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
         self.Entryinfo11 = tk.Entry(self.Labelframe1, textvariable=self.PRUN)
-        self.Entryinfo11.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW)
+        self.Entryinfo11.grid(row=11, column=1, sticky='w')
 
-        EtrInfoY+=LblInfoGapY
-        self.Entryinfo12a = tk.Entry(self.Labelframe1, textvariable=self.PROHH)
-        self.Entryinfo12a.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=50)
-        self.Labelinfo12a = tk.Label(self.Labelframe1, text="H/D")
-        self.Labelinfo12a.place(x=EtrInfoX+50, y=EtrInfoY, height=EtrInfoH, width=30)
+        self.Frameinfo12 = tk.Frame(self.Labelframe1)
+        self.Frameinfo12.grid(row=12, column=1, sticky='w')
+        self.Entryinfo12a = tk.Entry(self.Frameinfo12, textvariable=self.PROHH)
+        self.Entryinfo12a.grid(row=0, column=0)
+        self.Labelinfo12a = tk.Label(self.Frameinfo12, text="H/D")
+        self.Labelinfo12a.grid(row=0, column=1)
+        self.Entryinfo12b = tk.Entry(self.Frameinfo12, textvariable=self.PROHD)
+        self.Entryinfo12b.grid(row=0, column=2)
+        self.Labelinfo12b = tk.Label(self.Frameinfo12, text="D/W")
+        self.Labelinfo12b.grid(row=0, column=3)
+        self.Entryinfo12c = tk.Entry(self.Frameinfo12, textvariable=self.PRODW)
+        self.Entryinfo12c.grid(row=0, column=4)
+        self.Labelinfo12c = tk.Label(self.Frameinfo12, text="W/Y")
+        self.Labelinfo12c.grid(row=0, column=5)
 
-        self.Entryinfo12b = tk.Entry(self.Labelframe1, textvariable=self.PROHD)
-        self.Entryinfo12b.place(x=EtrInfoX+80, y=EtrInfoY, height=EtrInfoH, width=30)
-        self.Labelinfo12b = tk.Label(self.Labelframe1, text="D/W")
-        self.Labelinfo12b.place(x=EtrInfoX+110, y=EtrInfoY, height=EtrInfoH, width=30)
-
-        self.Entryinfo12c = tk.Entry(self.Labelframe1, textvariable=self.PRODW)
-        self.Entryinfo12c.place(x=EtrInfoX+140, y=EtrInfoY, height=EtrInfoH, width=30)
-        self.Labelinfo12c = tk.Label(self.Labelframe1, text="W/Y")
-        self.Labelinfo12c.place(x=EtrInfoX+170, y=EtrInfoY, height=EtrInfoH, width=30)
-
-        EtrInfoY+=LblInfoGapY
-        self.Entryinfo13a = tk.Entry(self.Labelframe1, textvariable=self.OFOHH)
-        self.Entryinfo13a.place(x=EtrInfoX, y=EtrInfoY, height=EtrInfoH, width=50)
-        self.Labelinfo13a = tk.Label(self.Labelframe1, text="H/D")
-        self.Labelinfo13a.place(x=EtrInfoX+50, y=EtrInfoY, height=EtrInfoH, width=30)
-
-        self.Entryinfo13b = tk.Entry(self.Labelframe1, textvariable=self.OFOHD)
-        self.Entryinfo13b.place(x=EtrInfoX+80, y=EtrInfoY, height=EtrInfoH, width=30)
-        self.Labelinfo13b = tk.Label(self.Labelframe1, text="D/W")
-        self.Labelinfo13b.place(x=EtrInfoX+110, y=EtrInfoY, height=EtrInfoH, width=30)
-
-        self.Entryinfo13c = tk.Entry(self.Labelframe1, textvariable=self.OFODW)
-        self.Entryinfo13c.place(x=EtrInfoX+140, y=EtrInfoY, height=EtrInfoH, width=30)
-        self.Labelinfo13c = tk.Label(self.Labelframe1, text="W/Y")
-        self.Labelinfo13c.place(x=EtrInfoX+170, y=EtrInfoY, height=EtrInfoH, width=30)
-
-        EtrInfoY+=LblInfoGapY
+        self.Frameinfo13 = tk.Frame(self.Labelframe1)
+        self.Frameinfo13.grid(row=13, column=1, sticky='w')
+        self.Entryinfo13a = tk.Entry(self.Frameinfo13, textvariable=self.OFOHH)
+        self.Entryinfo13a.grid(row=0, column=0)
+        self.Labelinfo13a = tk.Label(self.Frameinfo13, text="H/D")
+        self.Labelinfo13a.grid(row=0, column=1)
+        self.Entryinfo13b = tk.Entry(self.Frameinfo13, textvariable=self.OFOHD)
+        self.Entryinfo13b.grid(row=0, column=2)
+        self.Labelinfo13b = tk.Label(self.Frameinfo13, text="D/W")
+        self.Labelinfo13b.grid(row=0, column=3)
+        self.Entryinfo13c = tk.Entry(self.Frameinfo13, textvariable=self.OFODW)
+        self.Entryinfo13c.grid(row=0, column=4)
+        self.Labelinfo13c = tk.Label(self.Frameinfo13, text="W/Y")
+        self.Labelinfo13c.grid(row=0, column=5)
+        
         Professors = ["Dr. Alparslan Oztekin", "Dr. Sudhakar Neti", "Dr. Ebru Demir"]
-        self.Entryinfo14 = tk.OptionMenu(self.Labelframe1, self.PROF, *Professors)
-        self.Entryinfo14.place(x=EtrInfoX+1, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW-1)
+        self.Optioninfo14 = tk.OptionMenu(self.Labelframe1, self.PROF, *Professors)
+        self.Optioninfo14.grid(row=14, column=1)
 
-        EtrInfoY+=LblInfoGapY
-        Students= ["Justin Caspar", "Tong Su", "Orhan Kaya", "Guanyang Xue", "Muhannad Altimemy", "Direnc Akyildiz"]
-        self.Entryinfo15 = tk.OptionMenu(self.Labelframe1, self.LEAD, *Students)
-        self.Entryinfo15.place(x=EtrInfoX+1, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW-1)
+        Students= ["Tong Su", "Orhan Kaya", "Guanyang Xue", "Muhannad Altimemy", "Direnc Akyildiz", "Amin Balazadeh", "Evan Dare"]
+        self.Optioninfo15 = tk.OptionMenu(self.Labelframe1, self.LEAD, *Students)
+        self.Optioninfo15.grid(row=15, column=1)
 
-        EtrInfoY+=LblInfoGapY
-        self.Entryinfo16 = tk.OptionMenu(self.Labelframe1, self.SAFE, *Students)
-        self.Entryinfo16.place(x=EtrInfoX+1, y=EtrInfoY, height=EtrInfoH, width=EtrInfoW-1)
+        self.Optioninfo16 = tk.OptionMenu(self.Labelframe1, self.SAFE, *Students)
+        self.Optioninfo16.grid(row=16, column=1)
 
-        EtrInfoY+=LblInfoGapY
-        self.Entryinfo17a = tk.Label(self.Labelframe1, textvariable=self.NumPART)
-        self.Entryinfo17a.place(x=EtrInfoX+10, y=EtrInfoY, height=EtrInfoH, width=80)
-        self.Entryinfo17b = tk.Button(self.Labelframe1, text="Edit", command=lambda: self.EditPeople("PART"))
-        self.Entryinfo17b.place(x=EtrInfoX+110, y=EtrInfoY-1, height=EtrInfoH, width=80)
+        self.Frameinfo17 = tk.Frame(self.Labelframe1)
+        self.Frameinfo17.grid(row=17, column=1, sticky='w')
+        self.Entryinfo17 = tk.Label(self.Frameinfo17, textvariable=self.NumPART)
+        self.Entryinfo17.grid(row=0, column=0)
+        self.Buttoninfo17 = tk.Button(self.Frameinfo17, text="Edit", command=lambda: self.EditPeople("PART"))
+        self.Buttoninfo17.grid(row=0, column=1)
 
-        EtrInfoY+=LblInfoGapY
-        self.Entryinfo18a = tk.Label(self.Labelframe1, textvariable=self.NumCONT)
-        self.Entryinfo18a.place(x=EtrInfoX+10, y=EtrInfoY, height=EtrInfoH, width=80)
-        self.Entryinfo18b = tk.Button(self.Labelframe1, text="Edit", command=lambda: self.EditPeople("CONT"))
-        self.Entryinfo18b.place(x=EtrInfoX+110, y=EtrInfoY-1, height=EtrInfoH, width=80)
+        self.Frameinfo18 = tk.Frame(self.Labelframe1)
+        self.Frameinfo18.grid(row=18, column=1, sticky='w')
+        self.Entryinfo18 = tk.Label(self.Frameinfo18, textvariable=self.NumCONT)
+        self.Entryinfo18.grid(row=0, column=0)
+        self.Buttoninfo18 = tk.Button(self.Frameinfo18, text="Edit", command=lambda: self.EditPeople("CONT"))
+        self.Buttoninfo18.grid(row=0, column=1)
 
-
+        # set grid row and column weight
+        for rows in range(self.Labelframe1.grid_size()[1]):
+            self.Labelframe1.rowconfigure(rows, minsize=30)
+            # set label padx
+            if rows > 0:                
+                self.Labelframe1.grid_slaves(row=rows, column=0)[0].config(padx=10)
+        self.Labelframe1.rowconfigure(0, minsize=5)
+        self.Labelframe1.columnconfigure(0, minsize=120)
+        self.Labelframe1.columnconfigure(1, minsize=180)
+        self.Dateinfo02.config(width=18)
+        self.Entryinfo12a.config(width=4)
+        self.Labelinfo12a.config(width=2)
+        self.Entryinfo12b.config(width=2)
+        self.Labelinfo12b.config(width=2)
+        self.Entryinfo12c.config(width=2)
+        self.Labelinfo12c.config(width=2)
+        self.Entryinfo13a.config(width=4)
+        self.Labelinfo13a.config(width=2)
+        self.Entryinfo13b.config(width=2)
+        self.Labelinfo13b.config(width=2)
+        self.Entryinfo13c.config(width=2)
+        self.Labelinfo13c.config(width=2)
+        self.Optioninfo14.config(width=16)
+        self.Optioninfo15.config(width=16)
+        self.Optioninfo16.config(width=16)
+        self.Frameinfo17.columnconfigure(0, minsize=90)
+        self.Frameinfo17.columnconfigure(1, minsize=90)
+        self.Frameinfo18.columnconfigure(0, minsize=90)
+        self.Frameinfo18.columnconfigure(1, minsize=90)
+        self.Buttoninfo17.config(width=6)
+        self.Buttoninfo18.config(width=6)
+            
         self.Labelframe2 = tk.LabelFrame(self.parent, text="Workflow")
-        self.Labelframe2.place(x=380, y=10, height=510, width=210)
+        self.Labelframe2.place(x=380, y=10, height=570, width=210)
 
-        LblCompX=10
-        CmdCompX=40
-        LblCompW=180
-        CmdCompW=120
-        CmdCompH=28
-        CompY=10
-        CompGapY=10
+        self.Label1 = tk.Label(self.Labelframe2, text="1. Analyze EnergyChart.xlsx",justify='left')
+        self.Label1.grid(row=0, column=0, sticky='w')
 
-        LblCompH=20
-        self.Label1 = tk.Label(self.Labelframe2)
-        self.Label1.place(x=LblCompX, y=CompY, height=LblCompH, width=LblCompW)
-        self.Label1.configure(anchor='w')
-        self.Label1.configure(text="1. Analyze EnergyChart.xlsx")
-        CompY+=LblCompH
+        self.Button1 = tk.Button(self.Labelframe2, text="Locate File", command = self.LoadEnergyChart)
+        self.Button1.grid(row=1, column=0)
 
-        self.Button1 = tk.Button(self.Labelframe2, command = self.LoadEnergyChart)
-        self.Button1.place(x=CmdCompX, y=CompY, height=CmdCompH, width=CmdCompW)
-        self.Button1.configure(text="Locate File")
-        CompY+=CmdCompH+CompGapY
+        self.Label2 = tk.Label(self.Labelframe2, text="2. Open EnergyChart.xlsx and save as Web Page (.htm)",justify='left')
+        self.Label2.grid(row=3, column=0, sticky='w')
 
-        LblCompH=40
-        self.Label2 = tk.Label(self.Labelframe2)
-        self.Label2.place(x=LblCompX, y=CompY, height=LblCompH, width=LblCompW)
-        self.Label2.configure(anchor='w',justify='left',wraplength="180")
-        self.Label2.configure(text="2. Open EnergyChart.xlsx and save as Web Page (.htm)")
+        self.Button2 = tk.Button(self.Labelframe2, text="Open in Excel", command = self.OpenEnergyChart)
+        self.Button2.grid(row=4, column=0)
 
-        CompY+=LblCompH
+        self.Label3 = tk.Label(self.Labelframe2, text="3. Fill in visit information",justify='left')
+        self.Label3.grid(row=6, column=0, sticky='w')
 
-        self.Button2 = tk.Button(self.Labelframe2, command = self.OpenEnergyChart)
-        self.Button2.place(x=CmdCompX, y=CompY, height=CmdCompH, width=CmdCompW)
-        self.Button2.configure(text="Open in Excel")
-        CompY+=CmdCompH+CompGapY
-
-        LblCompH=20
-        self.Label3 = tk.Label(self.Labelframe2)
-        self.Label3.place(x=LblCompX, y=CompY, height=LblCompH, width=LblCompW)
-        self.Label3.configure(anchor='w')
-        self.Label3.configure(text="3. ← Fill in visit information")
-        CompY+=LblCompH
-
-        self.Button3 = tk.Button(self.Labelframe2, command = self.SaveInfo)
-        self.Button3.place(x=CmdCompX, y=CompY, height=CmdCompH, width=CmdCompW)
-        self.Button3.configure(text="Save info")
-        CompY+=CmdCompH+CompGapY
+        self.Button3 = tk.Button(self.Labelframe2, text='Save information', command = self.SaveInfo)
+        self.Button3.grid(row=7, column=0)
+  
+        self.Label4 = tk.Label(self.Labelframe2, text="4. Locate the folder including all recommendation .docx",justify='left')
+        self.Label4.grid(row=9, column=0, sticky='w')
         
+        self.Button4 = tk.Button(self.Labelframe2, text="Locate folder", command = self.LocateRecommendation)
+        self.Button4.grid(row=10, column=0)
 
-        LblCompH=40
-        self.Label4 = tk.Label(self.Labelframe2)
-        self.Label4.place(x=LblCompX, y=CompY, height=LblCompH, width=LblCompW)
-        self.Label4.configure(anchor='w',justify='left',wraplength="180")
-        self.Label4.configure(text="4. Locate the folder including all recommendation .docx")
-        CompY+=LblCompH
-        
-        self.Button4 = tk.Button(self.Labelframe2, command = self.LocateRecommendation)
-        self.Button4.place(x=CmdCompX, y=CompY, height=CmdCompH, width=CmdCompW)
-        self.Button4.configure(text="Locate folder")
-        CompY+=CmdCompH+CompGapY
+        self.Label5 = tk.Label(self.Labelframe2, text="5. Edit Description.docx",justify='left')
+        self.Label5.grid(row=12, column=0, sticky='w')
 
-        LblCompH=20
-        self.Label5 = tk.Label(self.Labelframe2)
-        self.Label5.place(x=LblCompX, y=CompY, height=LblCompH, width=LblCompW)
-        self.Label5.configure(anchor='w')
-        self.Label5.configure(text="5. Edit Description.docx")
-        CompY+=LblCompH
+        self.Button5 = tk.Button(self.Labelframe2, text="Open in Word", command = self.OpenDescription)
+        self.Button5.grid(row=13, column=0)
 
-        self.Button5 = tk.Button(self.Labelframe2, command = self.OpenDescription)
-        self.Button5.place(x=CmdCompX, y=CompY, height=CmdCompH, width=CmdCompW)
-        self.Button5.configure(text="Open in Word")
-        CompY+=CmdCompH+CompGapY
+        self.Label6 = tk.Label(self.Labelframe2, text="6. Compile the report",justify='left')
+        self.Label6.grid(row=15, column=0, sticky='w')
 
-        LblCompH=20
-        self.Label6 = tk.Label(self.Labelframe2)
-        self.Label6.place(x=LblCompX, y=CompY, height=LblCompH, width=LblCompW)
-        self.Label6.configure(anchor='w')
-        self.Label6.configure(text="6. Compile the report")
-        CompY+=LblCompH
+        self.Button6 = tk.Button(self.Labelframe2, text="Compile", command=self.CompileReport)
+        self.Button6.grid(row=16, column=0)
 
-        self.Button6 = tk.Button(self.Labelframe2, command=self.CompileReport)
-        self.Button6.place(x=CmdCompX, y=CompY, height=CmdCompH, width=CmdCompW)
-        self.Button6.configure(text="Compile")
-        CompY+=CmdCompH+CompGapY
+        self.Label7 = tk.Label(self.Labelframe2, text="7. Open the report, select all (Ctrl+A); refresh (F9), OK; refresh (F9) again, OK.",justify='left')
+        self.Label7.grid(row=18, column=0, sticky='w')
 
-        LblCompH=50
-        self.Label7 = tk.Label(self.Labelframe2)
-        self.Label7.place(x=LblCompX, y=CompY, height=LblCompH, width=LblCompW)
-        self.Label7.configure(anchor='w',justify='left',wraplength="180")
-        self.Label7.configure(text="7. Open the report, select all (ctrl+A); refresh (F9), OK; refresh (F9) again, OK.")
-        CompY+=LblCompH
+        self.Button7 = tk.Button(self.Labelframe2, text="Open in Word", command=self.OpenReport)
+        self.Button7.grid(row=19, column=0)
 
-        self.Button7 = tk.Button(self.Labelframe2, command=self.OpenReport)
-        self.Button7.place(x=CmdCompX, y=CompY, height=CmdCompH, width=CmdCompW)
-        self.Button7.configure(text="Open in Word")
-        CompY+=CmdCompH+CompGapY
+        self.Label8 = tk.Label(self.Labelframe2, text="Copyright © 2024\nLehigh University Industrial Assessment Center", justify='left')
+        self.Label8.grid(row=21, column=0, sticky='w')
+
+        for rows in range(self.Labelframe2.grid_size()[1]):
+            # add padx
+            if rows % 3 == 0:
+                #label
+                self.Labelframe2.rowconfigure(rows, minsize=24)
+                #change label wraplength
+                self.Labelframe2.grid_slaves(row=rows, column=0)[0].config(padx=10,wraplength=190)
+            elif rows % 3 == 1:
+                #button
+                #change button width
+                self.Labelframe2.grid_slaves(row=rows, column=0)[0].config(padx=10,width=15)
+            else:
+                #space
+                self.Labelframe2.rowconfigure(rows, minsize=10)
 
 
         self.Labelframe3 = tk.LabelFrame(self.parent)
-        self.Labelframe3.place(x=610, y=10, height=510, width=450)
+        self.Labelframe3.place(x=610, y=10, height=570, width=570)
         self.Labelframe3.configure(text="Command Line Output")
         self.Text1 = scrolledtext.ScrolledText(self.Labelframe3, state='disabled',wrap="word")
-        self.Text1.place(x=10, y=10, height=460, width=430)
+        self.Text1.place(x=10, y=5, height=540, width=550)
         self.Text1.tag_configure("stderr", foreground="#b22222")
-        self.Laebl8 = tk.Label(self.Labelframe3)
-        self.Laebl8.place(x=10, y=465, height=20, width=430)
-        self.Laebl8.configure(text="Copyright © 2024 Lehigh University Industrial Assessment Center")
+
         sys.stdout = TextRedirector(self.Text1, "stdout")
         sys.stderr = TextRedirector(self.Text1, "stderr")
 
@@ -400,8 +337,16 @@ class Application(tk.Frame):
         self.info.PROD.value = self.PROD.get()
         self.info.ANPR.value = int(self.ANPR.get())
         self.info.PRUN.value = self.PRUN.get()
-        self.info.PROH.value = [float(self.PROHH.get()), int(self.PROHD.get()), int(self.PRODW.get())]
-        self.info.OFOH.value = [float(self.OFOHH.get()), int(self.OFOHD.get()), int(self.OFODW.get())]
+        PROH = self.PROHH.get()
+        if PROH.isdigit():
+            self.info.PROH.value = [int(PROH), int(self.PROHD.get()), int(self.PRODW.get())]
+        else:
+            self.info.PROH.value = [float(PROH), int(self.PROHD.get()), int(self.PRODW.get())]
+        OFOH = self.OFOHH.get()
+        if OFOH.isdigit():
+            self.info.OFOH.value = [int(OFOH), int(self.OFOHD.get()), int(self.OFODW.get())]
+        else:
+            self.info.OFOH.value = [float(OFOH), int(self.OFOHD.get()), int(self.OFODW.get())]
         self.info.PROF.value = self.PROF.get()
         self.info.LEAD.value = self.LEAD.get()
         self.info.SAFE.value = self.SAFE.get()
